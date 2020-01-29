@@ -10,7 +10,6 @@ namespace ConsoleApp.Pages
         {
             // setup
             terminate = false;
-            Console.Clear();
 
             // Console UI
             Console.Clear();
