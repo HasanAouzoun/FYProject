@@ -4,13 +4,8 @@ namespace ConsoleApp.Pages
 {
     class MainPage
     {
-        private static bool terminate;
-
         public static void Display()
         {
-            // setup
-            terminate = false;
-
             // Console UI
             Console.Clear();
             Console.WriteLine("Welcome!! -- ToDo: added brife description");
@@ -21,35 +16,24 @@ namespace ConsoleApp.Pages
             Console.WriteLine("3) Help");
             Console.WriteLine("4) Exit");
 
-            // Request Input
-            var request = InputRequset();
+            // Request Action
+            var action = RequestAction();
 
-            while (terminate == false)
+            switch (action)
             {
-                // Process the Request
-                switch (request)
-                {
-                    case '1':
-                        NewProjectRequest();
-                        break;
-                    case '2':
-                        LoadProjectRequest();
-                        break;
-                    case '3':
-                        HelpRequest();
-                        break;
-                    case '4':
-                        ExitRequest();
-                        break;
-                    default:
-                        // if wrong action selected
-                        Console.WriteLine($"You have selected a wrong action, please select 1, 2, 3 or 4.");
-                        request = InputRequset();
-                        break;
-                }
+                case '1':
+                    NewProjectRequest();
+                    break;
+                case '2':
+                    LoadProjectRequest();
+                    break;
+                case '3':
+                    HelpRequest();
+                    break;
+                case '4':
+                    ExitRequest();
+                    break;
             }
-
-            System.Environment.Exit(0);
         }
 
         private static void NewProjectRequest()
@@ -77,16 +61,30 @@ namespace ConsoleApp.Pages
         {
             Console.Clear();
             Console.WriteLine($"Exiting...");
-            terminate = true;
         }
 
-        private static char InputRequset()
+        private static char RequestAction()
         {
+            // Request Input
+            Console.CursorVisible = true;
             Console.Write("What would you like to do? ");
             var request = Console.ReadKey();
             Console.WriteLine();
+            Console.CursorVisible = false;
 
-            return request.KeyChar;
+            // Process the Request
+            switch (request.KeyChar)
+            {
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                    return request.KeyChar;
+                default:
+                    // if wrong action selected
+                    Console.WriteLine($"You have selected a wrong action, please select 1, 2, 3 or 4.");
+                    return RequestAction();
+            }
         }
     }
 }
