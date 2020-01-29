@@ -5,7 +5,7 @@ namespace ConsoleApp
 {
     class Program
     {
-        private static List<string> _Pipe;
+        public static List<string> _Pipe;
 
         static void Main()
         {
