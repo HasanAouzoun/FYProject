@@ -6,6 +6,7 @@ namespace ConsoleApp
     class Program
     {
         public static List<string> _Pipe;
+        public static int GetPipeCount() { return _Pipe.Count; }
 
         static void Main()
         {
