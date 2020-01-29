@@ -22,7 +22,7 @@ namespace ConsoleApp.Helpers
 
             // Read the file
             Console.WriteLine("Reading the file");
-            var passwordList = ReadFile(inputPath);
+            var passwordList = ReadListFromFile(inputPath);
             Console.WriteLine("Done!");
 
             // Creating the pipe
@@ -36,7 +36,7 @@ namespace ConsoleApp.Helpers
             return null;
         }
 
-        public static List<string> ReadFile(string path)
+        public static List<string> ReadListFromFile(string path)
         {
             // set up for feedback (progress)
             Console.CursorVisible = false;
