@@ -47,7 +47,7 @@ namespace ConsoleApp.Pages
         private static void ExitRequest()
         {
             Console.Clear();
-            Console.WriteLine($"Exiting...");
+            Console.WriteLine($"Exiting . . .");
         }
 
         private static char RequestAction()
