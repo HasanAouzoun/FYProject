@@ -11,10 +11,9 @@ namespace ConsoleApp.Pages
             Console.WriteLine("Welcome!! -- ToDo: added brife description");
 
             // Actions
-            Console.WriteLine("1) New Project");
-            Console.WriteLine("2) Load Project");
-            Console.WriteLine("3) Help");
-            Console.WriteLine("4) Exit");
+            Console.WriteLine("1) Start");
+            Console.WriteLine("2) Help");
+            Console.WriteLine("3) Exit");
 
             // Request Action
             var action = RequestAction();
@@ -22,32 +21,21 @@ namespace ConsoleApp.Pages
             switch (action)
             {
                 case '1':
-                    NewProjectRequest();
+                    StartRequest();
                     break;
                 case '2':
-                    LoadProjectRequest();
-                    break;
-                case '3':
                     HelpRequest();
                     break;
-                case '4':
+                case '3':
                     ExitRequest();
                     break;
             }
         }
 
-        private static void NewProjectRequest()
+        private static void StartRequest()
         {
             // To Do
-            Console.WriteLine($"you have selected: New Project (ToDo)");
-            System.Environment.Exit(0);
-        }
-
-        private static void LoadProjectRequest()
-        {
-            // To Do
-            Console.WriteLine($"you have selected: Load Project (ToDo)");
-            System.Environment.Exit(0);
+            StartPage.Display();
         }
 
         private static void HelpRequest()
@@ -78,11 +66,10 @@ namespace ConsoleApp.Pages
                 case '1':
                 case '2':
                 case '3':
-                case '4':
                     return request.KeyChar;
                 default:
                     // if wrong action selected
-                    Console.WriteLine($"You have selected a wrong action, please select 1, 2, 3 or 4.");
+                    Console.WriteLine($"You have selected a wrong action, please select 1, 2 or 3.");
                     return RequestAction();
             }
         }
