@@ -49,8 +49,7 @@ namespace ConsoleApp.Pages
         private static void FilterRequest()
         {
             // To Do
-            Console.WriteLine($"you have selected: Filter (ToDo)");
-            Thread.Sleep(500); // just a temporary feedback - will be removed when the functionality is implemented
+            FilterPage.Display();
 
             // return to project page
             Display();
