@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp.Pages
 {
-    class StartPage
+    class ProjectPage
     {
         public static void Display()
         {

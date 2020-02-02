@@ -11,7 +11,7 @@ namespace ConsoleApp.Pages
             Console.WriteLine("Welcome!! -- ToDo: added brife description");
 
             // Actions
-            Console.WriteLine("1) Start");
+            Console.WriteLine("1) Start Project");
             Console.WriteLine("2) Help");
             Console.WriteLine("3) Exit");
 
@@ -34,8 +34,7 @@ namespace ConsoleApp.Pages
 
         private static void StartRequest()
         {
-            // To Do
-            StartPage.Display();
+            ProjectPage.Display();
         }
 
         private static void HelpRequest()
