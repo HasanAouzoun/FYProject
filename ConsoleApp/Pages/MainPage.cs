@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp.Pages
 {
@@ -34,6 +35,7 @@ namespace ConsoleApp.Pages
 
         private static void StartRequest()
         {
+            //Program._Pipe = new List<string>();
             ProjectPage.Display();
         }
 
