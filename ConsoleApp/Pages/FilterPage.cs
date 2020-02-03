@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using ConsoleApp.Helpers;
 using ConsoleApp.Models;
 
@@ -27,17 +25,10 @@ namespace ConsoleApp.Pages
             Console.WriteLine();
 
             // Request Inputs
-            var inputs = RequestInputs();
+            var filterInputs = RequestInputs();
 
-            // Process
-            OutputDescriptionToFile(inputs);
-
-            // Process Filter
-            // create Folder/ Directory (title)
-            // create the Description.txt
-            // process the filter
-            
-        
+            // Process the filter
+            ProcessRequest(filterInputs);
         }
 
         private static FilterInputs RequestInputs()
@@ -151,34 +142,75 @@ namespace ConsoleApp.Pages
             }
         }
 
-        private static void OutputDescriptionToFile(FilterInputs inputs)
+        private static void ProcessRequest(FilterInputs filterInputs)
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), @$"Outputs\{inputs.Title}\Description.txt");
+            Console.WriteLine("\n### Processing the filter ###");
 
-            InputOutputHelper.WriteTextToFile(path, inputs.Description);
-        }
+            Console.WriteLine($"Output Directory: " +
+                $"\n\t{GetOutputDirectory(filterInputs.Title)}");
 
-        public static List<string> Filter(List<string> list, string regex, string title, string description, bool reverseFilter)
-        {
-            var filteredList = new List<string>();
-            var removedList = new List<string>();
+            OutputDescriptionToFile(filterInputs);
 
-            // regex
-            var _regex = new Regex(regex);
+            // Filter the Pipe
+            var filterOutputs = FilterHelper.FilterList(Program._Pipe, filterInputs.Pattern);
 
-            foreach (var str in list)
+            OutputListsToFile(filterOutputs, filterInputs);
+
+            // update the Pipe
+            if (filterInputs.ReverseFilter)
             {
-                if (_regex.IsMatch(str))
-                {
-                    filteredList.Add(str);
-                }
-                else
-                {
-                    removedList.Add(str);
-                }
+                Program._Pipe = filterOutputs.RemovedList;
+            }
+            else
+            {
+                Program._Pipe = filterOutputs.FilteredList;
             }
 
-            return filteredList;
+            ConsoleHelper.RequestAnyInputToProceed();
+        }
+
+        private static string GetOutputDirectory(string title)
+        {
+            return Path.Combine(Directory.GetCurrentDirectory(), @$"Outputs\{title}\");
+        }
+
+        private static void OutputDescriptionToFile(FilterInputs inputs)
+        {
+            var path = Path.Combine(GetOutputDirectory(inputs.Title), "Description.txt");
+
+            InputOutputHelper.WriteTextToFile(path, inputs.Description);
+
+            Console.WriteLine("Writing Description to Description.txt - Done");
+        }
+
+        private static void OutputListsToFile(FilterOutputs lists, FilterInputs inputs)
+        {
+            string filteredListFileName;
+            string removedListFileName;
+
+            if (inputs.ReverseFilter)
+            {
+                filteredListFileName = "FilteredList.txt";
+                removedListFileName = "RemovedList_MainOutput.txt";
+            }
+            else
+            {
+                filteredListFileName = "FilteredList_MainOutput.txt";
+                removedListFileName = "RemovedList.txt";
+            }
+
+            var filteredListPath = Path.Combine(GetOutputDirectory(inputs.Title), filteredListFileName);
+            var removedListPath = Path.Combine(GetOutputDirectory(inputs.Title), removedListFileName);
+
+            // write Filtered List To file
+            Console.WriteLine("Filtered List - ");
+            InputOutputHelper.WriteListToFile(filteredListPath, lists.FilteredList);
+
+            // write Removed List to file 
+            Console.WriteLine("Removed List - ");
+            InputOutputHelper.WriteListToFile(removedListPath, lists.RemovedList);
+
+            Console.WriteLine("Processing Done.");
         }
     }
 }
