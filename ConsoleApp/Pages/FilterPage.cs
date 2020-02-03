@@ -64,7 +64,7 @@ namespace ConsoleApp.Pages
             return new FilterInputs
             {
                 Pattern = regex,
-                Title = $"{title} - {DateTime.Now.ToString("dd/MM/yyyy H-mm tt")}",
+                Title = $"{title} - {DateTime.Now.ToString("dd-MM-yyyy HH-mm tt")}",
                 Description = description,
                 ReverseFilter = filterType
             };
