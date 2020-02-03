@@ -118,5 +118,14 @@ namespace ConsoleApp.Helpers
 
             sw.Close();
         }
+
+        public static void WriteTextToFile(string path, string text)
+        {
+            // creates Directory if does not exists
+            var file = new FileInfo(path);
+            file.Directory.Create();
+
+            File.WriteAllText(file.FullName, text);
+        }
     }
 }

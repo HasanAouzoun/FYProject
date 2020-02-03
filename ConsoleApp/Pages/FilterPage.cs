@@ -29,6 +29,9 @@ namespace ConsoleApp.Pages
             // Request Inputs
             var inputs = RequestInputs();
 
+            // Process
+            OutputDescriptionToFile(inputs);
+
             // Process Filter
             // create Folder/ Directory (title)
             // create the Description.txt
@@ -147,6 +150,12 @@ namespace ConsoleApp.Pages
                 return RequestFilterType();
             }
         }
+
+        private static void OutputDescriptionToFile(FilterInputs inputs)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), @$"Outputs\{inputs.Title}\Description.txt");
+
+            InputOutputHelper.WriteTextToFile(path, inputs.Description);
         }
 
         public static List<string> Filter(List<string> list, string regex, string title, string description, bool reverseFilter)
