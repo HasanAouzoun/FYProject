@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Collections.Generic;
 using System.Text;
+using ConsoleApp.Helpers;
 
 namespace ConsoleApp.Pages
 {
@@ -57,9 +58,8 @@ namespace ConsoleApp.Pages
 
         private static void SortRequest()
         {
-            // To Do
-            Console.WriteLine($"you have selected: Sort (ToDo)");
-            Thread.Sleep(500); // just a temporary feedback - will be removed when the functionality is implemented
+            // Display sort page
+            SortPage.Display();
 
             // return to project page
             Display();
