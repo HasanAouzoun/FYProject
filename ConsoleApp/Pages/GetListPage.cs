@@ -12,7 +12,7 @@ namespace ConsoleApp.Pages
             Console.Clear();
             Console.WriteLine("To start a new project you need a list of strings to perform the filters on it.");
             Console.WriteLine("Please provide the name of the file that contains this list. This should be inside the directory of this software.");
-            Console.WriteLine(@"Example: example.txt or subDirectory\example.txt");
+            Console.WriteLine(@"Example: list.txt or subDirectory\list.txt");
 
             // Get File Name
             var filePath = RequestFile();
