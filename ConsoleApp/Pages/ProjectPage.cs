@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading;
+using ConsoleApp.Helpers;
+
 namespace ConsoleApp.Pages
 {
     class ProjectPage
@@ -12,8 +14,7 @@ namespace ConsoleApp.Pages
             // Get List Page (mandatory for a new project) -- i.e. empty list
             if (Program.GetPipeCount().Equals(0))
             {
-                GetListPage.Display();
-                Console.WriteLine("Note: As a new list, we advise to sort it first, to better analyse the output of this software.");
+                NewProjectSetUp();
             }
 
             // Display curret list count
@@ -23,7 +24,8 @@ namespace ConsoleApp.Pages
             Console.WriteLine("Actions available:");
             Console.WriteLine("\t1) Filter");
             Console.WriteLine("\t2) Sort");
-            Console.WriteLine("\t3) End");
+            Console.WriteLine("\t3) Get New List");
+            Console.WriteLine("\t4) End");
 
             // Request and confirm Action
             var action = RequestConfirmAction();
@@ -38,9 +40,27 @@ namespace ConsoleApp.Pages
                     SortRequest();
                     break;
                 case '3':
+                    GetNewListRequest();
+                    break;
+                case '4':
                     EndRequest();
                     break;
             }
+        }
+
+        private static void NewProjectSetUp()
+        {
+            Console.WriteLine("To start a new project you need a list of strings to perform the filters on it.");
+            ConsoleHelper.RequestAnyInputToProceed();
+
+            // Display Get List Page
+            GetListPage.Display();
+
+            // Side note
+            Console.WriteLine("Note: As a new list, we advise to sort it first, to better analyse the output of this software.");
+            ConsoleHelper.RequestAnyInputToProceed();
+
+            Console.Clear();
         }
 
         private static void FilterRequest()
@@ -58,6 +78,19 @@ namespace ConsoleApp.Pages
             SortPage.Display();
 
             // return to project page
+            Display();
+        }
+
+        private static void GetNewListRequest()
+        {
+            // Display Get List Page
+            GetListPage.Display();
+            
+            // Side note
+            Console.WriteLine("Note: As a new list, we advise to sort it first, to better analyse the output of this software.");
+            ConsoleHelper.RequestAnyInputToProceed();
+
+            // Return to Project Page
             Display();
         }
 
@@ -98,10 +131,11 @@ namespace ConsoleApp.Pages
                 case '1':
                 case '2':
                 case '3':
+                case '4':
                     return request.KeyChar;
                 default:
-                    // if wrong action selected
-                    Console.WriteLine($"You have selected a wrong action, please select 1, 2 or 3.");
+                    // if wrong action selected, ask again
+                    Console.WriteLine($"You have selected a wrong action, please select a number between 1 to 4.");
                     return RequestAction();
             }
         }
@@ -123,7 +157,7 @@ namespace ConsoleApp.Pages
                 case 'n':
                     return false;
                 default:
-                    // if wrong confirmation action selected
+                    // if wrong confirmation action selected, ask again
                     Console.WriteLine($"Please type 'y' for yes, or 'n' for no.");
                     return ConfirmRequest(requestNumber);
             }
