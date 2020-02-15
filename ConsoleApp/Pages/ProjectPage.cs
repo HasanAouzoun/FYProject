@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Threading;
-using System.Collections.Generic;
-using System.Text;
-using ConsoleApp.Helpers;
-
 namespace ConsoleApp.Pages
 {
     class ProjectPage
@@ -49,7 +45,7 @@ namespace ConsoleApp.Pages
 
         private static void FilterRequest()
         {
-            // To Do
+            // Display Filter Page
             FilterPage.Display();
 
             // return to project page

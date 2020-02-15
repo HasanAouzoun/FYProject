@@ -10,7 +10,7 @@ namespace ConsoleApp
 
         static void Main()
         {
-            // Initial set up
+            // Initial set up ==> Setting up the Pipe
             _Pipe = new List<string>();
 
             MainPage.Display();
