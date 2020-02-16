@@ -6,13 +6,15 @@ namespace ConsoleApp.Pages
 {
     class ProjectPage
     {
+        public static bool IsNewProject = true;
+
         public static void Display()
         {
             // Page set up
             Console.Clear();
 
             // Get List Page (mandatory for a new project) -- i.e. empty list
-            if (Program.GetPipeCount().Equals(0))
+            if (IsNewProject)
             {
                 NewProjectSetUp();
             }
@@ -61,6 +63,8 @@ namespace ConsoleApp.Pages
             ConsoleHelper.RequestAnyInputToProceed();
 
             Console.Clear();
+
+            IsNewProject = false;
         }
 
         private static void FilterRequest()
