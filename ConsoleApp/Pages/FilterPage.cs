@@ -185,7 +185,7 @@ namespace ConsoleApp.Pages
 
         private static string GetOutputDirectory(string title)
         {
-            return Path.Combine(Directory.GetCurrentDirectory(), @$"Outputs\{title}\");
+            return Path.Combine(Directory.GetCurrentDirectory(), @$"Outputs\Filters\{title}\");
         }
 
         private static void OutputDescriptionToFile(FilterInputs inputs)
