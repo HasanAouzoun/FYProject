@@ -101,7 +101,7 @@ namespace ConsoleApp.Pages
         private static void BackToMainPageRequest()
         {
             Console.Clear();
-            Console.WriteLine($"Ending Process . . .");
+            Console.WriteLine($"Going back to Main page . . .");
             Thread.Sleep(500);
             MainPage.Display();
         }
