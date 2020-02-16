@@ -106,6 +106,12 @@ namespace ConsoleApp.Pages
                 return RequestTitle();
             }
 
+            if (!InputOutputHelper.IsValidFileName(title))
+            {
+                Console.WriteLine("Title contains ilegal character. The tilte is needed to create a new directory. Therefore, it is needed to have a valid file name.");
+                return RequestTitle();
+            }
+
             return title;
         }
 
