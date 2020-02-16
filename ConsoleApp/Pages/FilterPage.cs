@@ -24,6 +24,15 @@ namespace ConsoleApp.Pages
                 "\n\tReverse: it will return the removed list. i.e. the list that did not match the filter pattern.");
             Console.WriteLine();
 
+            // Confirm to proceed with the filtering
+            Console.WriteLine("Would you like to proceed (y) or go back (n)");
+            if (!ConsoleHelper.InputConfirmation())
+            {
+                Console.WriteLine("Filter aborted");
+                ConsoleHelper.RequestAnyInputToProceed();
+                return;
+            }
+
             // Request Inputs
             var filterInputs = RequestInputs();
 
