@@ -2,6 +2,7 @@
 {
     enum SortType
     {
+        Null,
         Ascending,
         Descending
     }
