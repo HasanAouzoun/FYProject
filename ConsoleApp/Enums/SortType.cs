@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp.Enums
 {
-    enum SortType
+    public enum SortType
     {
         Null,
         Ascending,

@@ -5,7 +5,7 @@ using ConsoleApp.Models;
 
 namespace ConsoleApp.Helpers
 {
-    class FilterHelper
+    public class FilterHelper
     {
         public static FilterOutputs FilterList(List<string> list, Regex regex)
         {

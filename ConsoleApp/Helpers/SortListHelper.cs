@@ -3,7 +3,7 @@ using ConsoleApp.Enums;
 
 namespace ConsoleApp.Helpers
 {
-    class SortListHelper
+    public class SortListHelper
     {
         public static List<string> Sort(List<string> list, SortType sortType)
         {

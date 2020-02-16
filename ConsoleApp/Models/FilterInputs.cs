@@ -2,7 +2,7 @@
 
 namespace ConsoleApp.Models
 {
-    class FilterInputs
+    public class FilterInputs
     {
         public Regex Pattern { get; set; }
         public string Title { get; set; }

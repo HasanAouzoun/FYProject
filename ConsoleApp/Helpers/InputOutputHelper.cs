@@ -4,7 +4,7 @@ using System.IO;
 
 namespace ConsoleApp.Helpers
 {
-    class InputOutputHelper
+    public class InputOutputHelper
     {
         public static List<string> ReadListFromFile(string path)
         {
