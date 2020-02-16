@@ -24,10 +24,11 @@ namespace ConsoleApp.Pages
 
             // Actions
             Console.WriteLine("Actions available:");
-            Console.WriteLine("\t1) Filter");
-            Console.WriteLine("\t2) Sort");
-            Console.WriteLine("\t3) Get New List");
-            Console.WriteLine("\t4) Back to main page");
+            Console.WriteLine("\t1) Filter list");
+            Console.WriteLine("\t2) Sort list");
+            Console.WriteLine("\t3) Output list to file");
+            Console.WriteLine("\t4) Get new list");
+            Console.WriteLine("\t5) Back to main page");
 
             // Request and confirm Action
             var action = RequestConfirmAction();
@@ -42,9 +43,12 @@ namespace ConsoleApp.Pages
                     SortRequest();
                     break;
                 case '3':
-                    GetNewListRequest();
+                    OutputListRequest();
                     break;
                 case '4':
+                    GetNewListRequest();
+                    break;
+                case '5':
                     BackToMainPageRequest();
                     break;
             }
@@ -80,6 +84,15 @@ namespace ConsoleApp.Pages
         {
             // Display sort page
             SortPage.Display();
+
+            // return to project page
+            Display();
+        }
+
+        private static void OutputListRequest()
+        {
+            // Display the page
+            OutputListPage.Display();
 
             // return to project page
             Display();
@@ -134,10 +147,11 @@ namespace ConsoleApp.Pages
                 case '2':
                 case '3':
                 case '4':
+                case '5':
                     return request.KeyChar;
                 default:
                     // if wrong action selected, ask again
-                    Console.WriteLine($"You have selected a wrong action, please select a number between 1 to 4.");
+                    Console.WriteLine($"You have selected a wrong action, please select a number between 1 to 5.");
                     return RequestAction();
             }
         }

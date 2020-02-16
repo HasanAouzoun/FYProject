@@ -84,5 +84,13 @@ namespace ConsoleApp.Helpers
 
             File.WriteAllText(file.FullName, text);
         }
+
+        public static bool IsValidFileName(string filename)
+        {
+            var isValid = !string.IsNullOrEmpty(filename) &&
+                          filename.IndexOfAny(Path.GetInvalidFileNameChars()) < 0;
+
+            return isValid;
+        }
     }
 }
