@@ -27,7 +27,7 @@ namespace ConsoleApp.Pages
             Console.WriteLine("\t1) Filter");
             Console.WriteLine("\t2) Sort");
             Console.WriteLine("\t3) Get New List");
-            Console.WriteLine("\t4) End");
+            Console.WriteLine("\t4) Back to main page");
 
             // Request and confirm Action
             var action = RequestConfirmAction();
@@ -45,7 +45,7 @@ namespace ConsoleApp.Pages
                     GetNewListRequest();
                     break;
                 case '4':
-                    EndRequest();
+                    BackToMainPageRequest();
                     break;
             }
         }
@@ -98,7 +98,7 @@ namespace ConsoleApp.Pages
             Display();
         }
 
-        private static void EndRequest()
+        private static void BackToMainPageRequest()
         {
             Console.Clear();
             Console.WriteLine($"Ending Process . . .");
