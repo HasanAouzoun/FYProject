@@ -6,10 +6,8 @@ namespace ConsoleApp.Helpers
     {
         public static void RequestAnyInputToProceed()
         {
-            Console.CursorVisible = true;
             Console.Write("Press any key to continue . . . ");
             Console.ReadKey();
-            Console.CursorVisible = false;
         }
 
         public static bool InputConfirmation()

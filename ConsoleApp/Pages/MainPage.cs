@@ -53,11 +53,9 @@ namespace ConsoleApp.Pages
         private static char RequestAction()
         {
             // Request Input
-            Console.CursorVisible = true;
             Console.Write("What would you like to do? ");
             var request = Console.ReadKey();
             Console.WriteLine();
-            Console.CursorVisible = false;
 
             // Process the Request
             switch (request.KeyChar)

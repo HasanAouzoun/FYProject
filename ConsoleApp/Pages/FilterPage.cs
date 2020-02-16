@@ -34,7 +34,6 @@ namespace ConsoleApp.Pages
         private static FilterInputs RequestInputs()
         {
             // Request Inputs
-            Console.CursorVisible = true;
             Console.WriteLine("### Filter Inputs ###");
             var regex = RequestPattern();
             var title = RequestTitle();

@@ -35,9 +35,7 @@ namespace ConsoleApp.Pages
 
             // request file name
             Console.Write("Input file name: ");
-            Console.CursorVisible = true;
             string fileName = Console.ReadLine();
-            Console.CursorVisible = false;
 
             // Get full path of the file name
             string fileFullPath = Path.Combine(Directory.GetCurrentDirectory(), fileName);

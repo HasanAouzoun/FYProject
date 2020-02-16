@@ -38,6 +38,9 @@ namespace ConsoleApp.Helpers
                 sr.Close();
             }
 
+            // feedback done -- display cursor
+            Console.CursorVisible = true;
+
             return passwords;
         }
 
@@ -66,6 +69,9 @@ namespace ConsoleApp.Helpers
                 var progress = (double) (i+1) / lenght * 100;
                 Console.WriteLine($"Writing to File ... ({string.Format("{0:0.00}", progress)}%)");
             }
+
+            // feedback done -- display cursor
+            Console.CursorVisible = true;
 
             sw.Close();
         }

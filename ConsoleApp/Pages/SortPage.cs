@@ -30,11 +30,9 @@ namespace ConsoleApp.Pages
         private static SortType RequestSortTypeInput()
         {
             // Wait for input
-            Console.CursorVisible = true;
             Console.Write("Please select a type: ");
             var request = Console.ReadKey();
             Console.WriteLine();
-            Console.CursorVisible = false;
 
             // Process the Request
             switch (request.KeyChar)

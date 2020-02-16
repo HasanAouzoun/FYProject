@@ -119,11 +119,9 @@ namespace ConsoleApp.Pages
         private static char RequestAction()
         {
             // Request Input
-            Console.CursorVisible = true;
             Console.Write("What would you like to do? ");
             var request = Console.ReadKey();
             Console.WriteLine();
-            Console.CursorVisible = false;
 
             // Process the Request
             switch (request.KeyChar)
@@ -143,11 +141,9 @@ namespace ConsoleApp.Pages
         private static bool ConfirmRequest(char requestNumber)
         {
             // Request confirmation
-            Console.CursorVisible = true;
             Console.Write($"Please confirm your request number {requestNumber}. (y/n) ");
             var confirmation = Console.ReadKey();
             Console.WriteLine();
-            Console.CursorVisible = false;
 
             // Process confirmation
             switch (confirmation.KeyChar)
