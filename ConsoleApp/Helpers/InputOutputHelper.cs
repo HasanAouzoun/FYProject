@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ConsoleApp.Helpers
 {
@@ -91,6 +92,39 @@ namespace ConsoleApp.Helpers
                           filename.IndexOfAny(Path.GetInvalidFileNameChars()) < 0;
 
             return isValid;
+        }
+
+        public static void WriteGroupsToFiles(List<IGrouping<string, string>> groups)
+        {
+            // Disable cursor
+            Console.CursorVisible = false;
+
+            // Number of groups
+            var length = groups.Count;
+
+            // Path directory 
+            var floderName = $"Split - {DateTime.Now.ToString("dd-MM-yyyy HH-mm tt")}";
+            var dirPath = Path.Combine(Directory.GetCurrentDirectory(), @$"Outputs\Lists\{floderName}\");
+
+            // Writing each group to file
+            for (int i = 0; i < length; i++)
+            {
+                var currentGroupNumber = i + 1;
+                Console.WriteLine($"Writing to file each group: {currentGroupNumber}/{length}");
+
+                // current group list
+                var group = groups[i];
+                var groupKey = group.Key;
+                var list = group.ToList();
+
+                var filePath = Path.Combine(dirPath, @$"List - {groupKey}.txt");
+
+                // writing to file
+                InputOutputHelper.WriteListToFile(filePath, list);
+            }
+
+            // enable cursor
+            Console.CursorVisible = true;
         }
     }
 }

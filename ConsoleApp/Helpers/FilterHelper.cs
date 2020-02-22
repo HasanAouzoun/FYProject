@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using ConsoleApp.Models;
+using System.Linq;
 
 namespace ConsoleApp.Helpers
 {
@@ -41,6 +42,23 @@ namespace ConsoleApp.Helpers
             Console.CursorVisible = true;
 
             return new FilterOutputs { FilteredList = filteredList, RemovedList = removedList };
+        }
+
+        public static List<IGrouping<string,string>> GroupByFirstCharacter(List<string> list)
+        {
+            // Feedback progress
+            Console.CursorVisible = false;
+            var rowNumber = Console.CursorTop;
+            Console.WriteLine("Spliting into groups, please wait...");
+
+            // group by first character ignoring the case
+            var groups = list.GroupBy(x => x.ElementAt(0).ToString().ToUpper()).ToList();
+
+            // Feedback after completion
+            Console.SetCursorPosition(0, rowNumber);
+            Console.WriteLine("Spliting into groups, Done.");
+
+            return groups;
         }
     }
 }
