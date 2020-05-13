@@ -10,7 +10,7 @@ namespace ConsoleApp.Pages
         {
             // Console UI
             Console.Clear();
-            Console.WriteLine("Welcome!! -- ToDo: added brife description");
+            Console.WriteLine("Filter App - Used to filter a list of strings using a regular expression string\n");
 
             // Actions
             Console.WriteLine("1) Start New Project");
@@ -52,9 +52,30 @@ namespace ConsoleApp.Pages
 
         private static void HelpRequest()
         {
-            // To Do
-            Console.WriteLine($"you have selected: Help (ToDo)");
-            System.Environment.Exit(0);
+            Console.Clear();
+
+            Console.WriteLine($"Help and Information Page:" +
+                $"\n\nThis app was developed to filter a list of passwords to remove" +
+                $"\nthe passwords categorised as invalid for a Replacement Pattern." +
+                $"\nThe output of this app is used as an input for a script that identifies" +
+                $"\nreplcement patterns. This was created for the final year project at the" +
+                $"\nUniversity of salford." +
+                
+                $"\n\nHow to use:" +
+                $"\n\tFirstly you need a list of strings. This needs to conatin strings separated" +
+                $"\n\tby line." +
+                $"\n\tThen you have several options to choose from:" +
+                $"\n\t1) Sort: to sort the list. Either by ascending or descending order." +
+                $"\n\t2) Filter: to filter it using a regular expresion." +
+                $"\n\t3) Output: to output the current list to the file." +
+                $"\n\t4) Get New: to get a new list." +
+
+                $"\nEach option displays more information when they are chosen." +
+                
+                $"\n\nPress any key to go back...");
+
+            Console.ReadKey();
+            Display();
         }
 
         private static void ExitRequest()
